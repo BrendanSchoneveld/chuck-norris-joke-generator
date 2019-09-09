@@ -82,7 +82,7 @@ class HomeView extends Component {
    *
    */
   fetchLocalStorageHistory() {
-    // haal alle opgeslagen data uit localstorage, en zet deze in de component state
+    // for all items in state
     for (let key in this.state) {
       if (key === "favorites") {
         // if the key exists in localStorage

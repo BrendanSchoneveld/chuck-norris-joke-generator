@@ -68,21 +68,27 @@ class HomeView extends Component {
    *
    */
   componentDidMount() {
-    this.fetchLocalStorageHistory();
+    // this.fetchLocalStorageHistory();
+    // add event listener to save state to localStorage
+    // when user leaves/refreshes the page
+    /* window.addEventListener(
+      "beforeunload",
+      this.saveStateToLocalStorage.bind(this)
+    ); */
   }
 
-  /*
-   *
-   */
   componentWillUnmount() {
+    /* window.removeEventListener(
+      "beforeunload",
+      this.saveStateToLocalStorage.bind(this)
+    ); */
+
+    // saves if component has a chance to unmount
     this.saveStateToLocalStorage();
   }
 
-  /*
-   *
-   */
   fetchLocalStorageHistory() {
-    // haal alle opgeslagen data uit localstorage, en zet deze in de component state
+    // for all items in state
     for (let key in this.state) {
       if (key === "favorites") {
         // if the key exists in localStorage
@@ -103,9 +109,6 @@ class HomeView extends Component {
     }
   }
 
-  /*
-   *
-   */
   saveStateToLocalStorage = () => {
     // Sla data alleen op voor de 'favorites' lijst
     for (let key in this.state) {
